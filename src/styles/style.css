@@ -30,7 +30,7 @@ h1 {
 #news {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .card {
@@ -38,24 +38,26 @@ h1 {
   padding: 18px;
   border-radius: 16px;
 
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 
   box-shadow:
-    0 4px 12px rgba(0,0,0,0.25),
-    inset 0 1px 0 rgba(255,255,255,0.03);
+    0 4px 12px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 
   transition: all 0.25s ease;
 
   position: relative;
   overflow: hidden;
+
+  animation: fadeInUp 0.4s ease;
 }
 
 .card:hover {
   transform: translateY(-4px) scale(1.01);
 
   box-shadow:
-    0 10px 25px rgba(0,0,0,0.4),
-    0 0 0 1px rgba(59,130,246,0.2);
+    0 10px 25px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(59, 130, 246, 0.2);
 }
 
 .card::before {
@@ -79,19 +81,23 @@ h1 {
 }
 
 .card a {
-  color: var(--accent);
-  text-decoration: none;
+  display: inline-block;
+  margin-top: 6px;
+
+  color: #60a5fa;
   font-size: 14px;
+
+  opacity: 0.9;
 }
 
 .card a:hover {
-  text-decoration: underline;
+  opacity: 1;
 }
 
 .card p {
   font-size: 12px;
-  color: var(--muted);
-  margin-top: 8px;
+  color: #9ca3af;
+  margin-top: 10px;
 }
 
 button {
@@ -108,6 +114,18 @@ button {
 
 button:hover {
   background: #2563eb;
+}
+
+/* ANIMAZIONI */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* DESKTOP */
