@@ -10,7 +10,8 @@ export async function init() {
 }
 
 export async function loadMore() {
-    const nestIds = state.ids.slice(state.currentIndex, state.currentIndex + ARTICLES_PER_PAGE);
+    const nextIds = state.ids.slice(state.currentIndex, 
+        state.currentIndex + ARTICLES_PER_PAGE);
 
 
     const articles = await Promise.all(nextIds.map(id => getStoryById(id)));
