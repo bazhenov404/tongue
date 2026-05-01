@@ -1,19 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* VARIABILI */
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --accent: #3b82f6;
+  --muted: #9ca3af;
+}
+
 body {
-  font-family: sans-serif;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 16px;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* CONTAINER */
+#news {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .card {
-  border: 1px solid #ddd;
-  padding: 16px;
-  margin-bottom: 12px;
-  border-radius: 8px;
+  background: linear-gradient(145deg, #111827, #0b1220);
+  padding: 18px;
+  border-radius: 16px;
+
+  border: 1px solid rgba(255,255,255,0.05);
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+
+  transition: all 0.25s ease;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(59,130,246,0.2);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+
+  background: linear-gradient(to bottom, #3b82f6, #60a5fa);
+
+  opacity: 0.8;
+}
+
+.card h2 {
+  font-size: 17px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+.card p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
 }
 
 button {
-  width: 100%;
-  padding: 12px;
+  margin-top: 20px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: white;
   font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #2563eb;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  body {
+    max-width: 700px;
+    margin: auto;
+  }
 }
