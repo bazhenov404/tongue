@@ -7,7 +7,7 @@ getNewStoriesIds().then(ids => {
 });
 
 document.querySelector('#app').innerHTML = `
-    <h1>Tongue Tech</h1>
+    <h1 class="app-title">Tongue Tech</h1>
     <div id='news'></div>
     <button id='loadMore'>Load More</button>`;
 
