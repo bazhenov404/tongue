@@ -1,6 +1,8 @@
 import {init, loadMore} from './controllers/newsController.js';
 import { getNewStoriesIds } from "./services/hackerNewsApi";
 import {state} from './models/newsModel.js';
+import { insights } from "./utils/insights";
+import { showPopup } from "./views/popupView";
 
 
 getNewStoriesIds().then(ids => {
