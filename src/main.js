@@ -12,7 +12,7 @@ getNewStoriesIds().then(ids => {
 document.querySelector('#app').innerHTML = `
     <h1 class="app-title">Tongue Tech</h1>
     <div id='news'></div>
-    <button id='loadMore'>Load More</button>`;
+    <button id='loadMore' class="load-more">Load more</button>`;
 
 const saved = localStorage.getItem("bookmarks");
 
@@ -21,6 +21,29 @@ if (saved) {
 }
 
 init();
+
+//popup logic//
+
+if (!sessionStorage.getItem("popupShown")) {
+  setTimeout(() => {
+    const random = insights[Math.floor(Math.random() * insights.length)];
+    showPopup(random);
+
+    sessionStorage.setItem("popupShown", "true");
+  }, 5000);
+}
+
+document.addEventListener("click", (e) => {
+  if (e.target.id === "closePopup") {
+    const overlay = document.querySelector(".popup-overlay");
+
+    overlay.classList.add("closing");
+
+    setTimeout(() => {
+      overlay.remove();
+    }, 300);
+  }
+});
 
 document.querySelector('#loadMore').addEventListener('click', loadMore);
 

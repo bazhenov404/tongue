@@ -6,7 +6,7 @@
 
 /* VARIABILI */
 :root {
-  --bg: #0f172a;
+  --bg: #16223e;
   --card: #111827;
   --text: #e5e7eb;
   --accent: #3b82f6;
@@ -14,7 +14,7 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: "Quantico", sans-serif;
   background: var(--bg);
   color: var(--text);
   padding: 16px;
@@ -30,11 +30,9 @@ h1 {
   font-size: 26px;
   font-weight: 700;
   letter-spacing: 0.5px;
-
   background: linear-gradient(90deg, #3b82f6, #60a5fa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   margin-bottom: 20px;
   transition: transform 0.2s ease;
 }
@@ -47,31 +45,25 @@ h1 {
 #news {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .card {
   background: linear-gradient(145deg, #111827, #0b1220);
   padding: 18px;
   border-radius: 16px;
-
   border: 1px solid rgba(255, 255, 255, 0.05);
-
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.03);
-
   transition: all 0.25s ease;
-
   position: relative;
   overflow: hidden;
-
   animation: fadeInUp 0.4s ease;
 }
 
 .card:hover {
   transform: translateY(-4px) scale(1.01);
-
   box-shadow:
     0 10px 25px rgba(0, 0, 0, 0.46),          
     0 0 0 1px rgba(59, 131, 246, 0.503),      
@@ -86,12 +78,11 @@ h1 {
 }
 
 .card a {
+  font-family: "Quantico", sans-serif;
   display: inline-block;
   margin-top: 6px;
-
   color: #60a5fa;
   font-size: 14px;
-
   opacity: 0.9;
 }
 
@@ -115,7 +106,7 @@ h1 {
 .bookmark {
   background: transparent;
   border: none;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   opacity: 0.6;
   transition: all 0.2s ease;
@@ -137,6 +128,7 @@ button {
   padding: 14px;
   border: none;
   border-radius: 12px;
+  min-height: 44px;
   background: var(--accent);
   color: white;
   font-size: 16px;
@@ -148,6 +140,15 @@ button:hover {
   background: #2563eb;
 }
 
+.load-more {
+  display: block;
+  margin: 15px auto;
+  font-family: "Quantico", sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+
+}
+
 /*POPUP*/
 .popup-overlay {
   position: fixed;
@@ -155,26 +156,62 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-
-  background: rgba(0,0,0,0.6);
-
+  background: rgba(0,0,0,0.65);
   display: flex;
   justify-content: center;
   align-items: center;
-
   z-index: 1000;
 }
 
 .popup {
-  background: #111827;
-  padding: 20px;
-  border-radius: 16px;
-  max-width: 300px;
-  text-align: center;
+  width: 90%;
+  max-width: 420px;
+  background: linear-gradient(145deg, #111827, #0b1220);
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(59,130,246,0.25);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.5),
+    0 0 30px rgba(59,130,246,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+  text-align: left;
+  position: relative;
+}
+
+.popup h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.popup p {
+  font-size: 14px;
+  color: #cbd5f5;
+  line-height: 1.5;
 }
 
 .popup button {
-  margin-top: 12px;
+  margin-top: 16px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.popup button:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.popup-overlay.closing {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+.popup-overlay.closing .popup {
+  animation: popupExit 0.3s ease forwards;
 }
 
 /* ANIMAZIONI */
@@ -189,10 +226,110 @@ button:hover {
   }
 }
 
-/* DESKTOP */
+@keyframes popupEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes popupExit {
+  to {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+}
+
+/* MOBILE <480px */
+body {
+  padding: 12px;
+}
+
+.app-title {
+  font-size: 20px;
+}
+
+.card {
+  padding: 14px;
+}
+
+.card h2 {
+  font-size: 15px;
+}
+
+button {
+  font-size: 14px;
+  padding: 12px;
+}
+
+/* MOBILE >480px */
+@media (min-width: 480px) {
+  body {
+    padding: 16px;
+  }
+
+  .app-title {
+    font-size: 22px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .card h2 {
+    font-size: 16px;
+  }
+}
+
+/* TABLET */
 @media (min-width: 768px) {
   body {
     max-width: 700px;
     margin: auto;
+  }
+
+  .app-title {
+    font-size: 26px;
+  }
+
+  #news {
+    gap: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .card h2 {
+    font-size: 18px;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  body {
+    max-width: 800px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .card h2 {
+    font-size: 19px;
+  }
+
+  button {
+    font-size: 16px;
   }
 }
