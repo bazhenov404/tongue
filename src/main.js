@@ -12,7 +12,10 @@ getNewStoriesIds().then(ids => {
 document.querySelector('#app').innerHTML = `
     <h1 class="app-title">Tongue Tech</h1>
     <div id='news'></div>
-    <button id='loadMore' class="load-more">Load more</button>`;
+    <button id='loadMore' class="load-more">
+      <span class="btn-text">Load more</span>
+      <span class="loader"></span>
+    </button>`;
 
 const saved = localStorage.getItem("bookmarks");
 
@@ -47,6 +50,22 @@ document.addEventListener("click", (e) => {
 
 document.querySelector('#loadMore').addEventListener('click', loadMore);
 
+const button = document.querySelector('#loadMore');
+
+button.addEventListener('click', async () => {
+  button.disabled = true;
+  button.classList.add('loading');
+
+  button.querySelector('.btn-text').textContent = "Loading...";
+
+  await loadMore();
+
+  button.disabled = false;
+  button.classList.remove('loading');
+
+  button.querySelector('.btn-text').textContent = "Load more";
+});
+
 //bookmark logic//
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("bookmark")) {
@@ -57,13 +76,15 @@ document.addEventListener("click", (e) => {
 
     const exists = state.bookmarks.some(a => a.id == id);
 
-    if (exists) {
-      state.bookmarks = state.bookmarks.filter(a => a.id != id);
-      button.classList.remove("active");
-    } else {
-      state.bookmarks.push(article);
-      button.classList.add("active");
-    }
+if (exists) {
+  state.bookmarks = state.bookmarks.filter(a => a.id != id);
+  button.classList.remove("active");
+  button.textContent = "☆"; 
+} else {
+  state.bookmarks.push(article);
+  button.classList.add("active");
+  button.textContent = "⭐";
+}
 
     localStorage.setItem(
       "bookmarks",

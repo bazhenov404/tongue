@@ -63,11 +63,12 @@ h1 {
 }
 
 .card:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.46),          
-    0 0 0 1px rgba(59, 131, 246, 0.503),      
-    0 0 25px rgba(255, 255, 255, 0.578);
+  transform: translateY(-4px) scale(1.06);
+  box-shadow:    0 10px 25px rgba(0,0,0,0.4),    0 0 0 1px rgba(65, 137, 253, 0.405),    0 0 20px rgba(59, 131, 246, 0.378);
+  -webkit-transform: translateY(-4px) scale(1.06);
+  -moz-transform: translateY(-4px) scale(1.06);
+  -ms-transform: translateY(-4px) scale(1.06);
+  -o-transform: translateY(-4px) scale(1.06);
 }
 
 .card h2 {
@@ -80,7 +81,8 @@ h1 {
 .card a {
   font-family: "Quantico", sans-serif;
   display: inline-block;
-  margin-top: 6px;
+  margin-top: 10px;
+  margin-left: 7px;
   color: #60a5fa;
   font-size: 14px;
   opacity: 0.9;
@@ -106,21 +108,20 @@ h1 {
 .bookmark {
   background: transparent;
   border: none;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0.7;
   transition: all 0.2s ease;
 }
 
 .bookmark:hover {
-  opacity: 1;
   transform: scale(1.2);
+  opacity: 1;
 }
 
 .bookmark.active {
-  opacity: 1;
-  transform: scale(1.2);
   color: gold;
+  opacity: 1;
 }
 
 button {
@@ -141,12 +142,37 @@ button:hover {
 }
 
 .load-more {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   margin: 15px auto;
   font-family: "Quantico", sans-serif;
   font-size: 22px;
   font-weight: 300;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
+.load-more:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+.loader {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  display: none;
+  animation: spin 0.8s linear infinite;
+}
+
+.load-more.loading .loader {
+  display: inline-block;
 }
 
 /*POPUP*/
@@ -190,7 +216,8 @@ button:hover {
 }
 
 .popup button {
-  margin-top: 16px;
+  display: block;
+  margin: 16px auto 0;
   padding: 10px 14px;
   border-radius: 10px;
   border: none;
@@ -198,7 +225,6 @@ button:hover {
   color: white;
   cursor: pointer;
   transition: all 0.2s ease;
-  text-align: center;
 }
 
 .popup button:hover {

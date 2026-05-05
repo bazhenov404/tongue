@@ -4,7 +4,7 @@ export function showPopup(insight) {
       <div class="popup">
         <h3>${insight.title}</h3>
         <p>${insight.text}</p>
-        <button id="closePopup">Chiudi</button>
+        <button id="closePopup" class="close-popup">Chiudi</button>
       </div>
     </div>
   `;
