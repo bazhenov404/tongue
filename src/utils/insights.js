@@ -5,10 +5,10 @@ export const insights = [
   },
   {
     title: "Evento Tongue",
-    text: "Questa settimana ospite un esperto di AI e impatto sociale."
+    text: "Questa settimana ospite un esperto di AI e impatto sociale. Orario: venerdì 18:00!"
   },
   {
     title: "Swap Party",
-    text: "Scambia vestiti invece di comprarli: meno spreco, più stile."
+    text: "Scambia vestiti invece di comprarli: meno spreco, più stile. Ogni giovedì al Tongue Tech!"
   }
 ];
